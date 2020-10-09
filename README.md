@@ -22,7 +22,7 @@
 
 
 2.
-　　importExcelフォルダに対象のExcelを入れる。
+　　ImportExcelフォルダの対象Excelを開く。
 
 
 
