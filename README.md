@@ -14,21 +14,37 @@
 
 
 ゆるふわ設計
+
+
 1.
 開始時にOutputPDFの中身を全部削除する。
 
+
+
 2.
 importExcelフォルダに対象のExcelを入れる。
+
+
+
 
 3.
 Excelファイルのファイル名を取得する。
 
 
+
+
+
 4.
 getPassIDTextにExcel内のセル座標を入手し、IDを入手
 
+
+
+
 5.
 ImportPasswordにて該当のパスワードと一致するIDを探し、パスワードを入手。
+
+
+
 
 
 6.
