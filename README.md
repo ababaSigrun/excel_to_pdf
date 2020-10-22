@@ -7,16 +7,26 @@
 社員の給与明細とか社員IDのあるものをExcelからpdfに一括でパスをつけて変換するためのプログラムです。
 
 1.対象のExcelファイルの社員IDにあたるセル座標ををpassAddressList.txtに記載する。
+
 　→Columnに列を入力してください。 ROWに列を入れてください。
+ 
 　例）社員番号がK6の場合
+ 
   Column=K
+  
   Row=6
+  
   となります。
 
+
 2.パスワードのリストを作成します。
+
 　passList.txtに社員IDごとにパスワードを設定します。
+ 
   例）社員ID=password
+  
       ABC1234=passTanaka
+      
       ABC5656=passYamada
 
 3.pdfにするExcelファイルをImportExcelファイルに格納します。
