@@ -1,0 +1,2 @@
+ABC1234=passTanaka
+ABC5656=passYamada
