@@ -12,9 +12,9 @@
  
 　例）社員番号がK6の場合
  
-  Column=K
+　　  Column=K
   
-  Row=6
+ 　　 Row=6
   
   となります。
 
