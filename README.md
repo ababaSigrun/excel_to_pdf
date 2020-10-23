@@ -11,8 +11,8 @@
 　→Columnに列を入力してください。 ROWに列を入れてください。
  
 　例）社員番号がK6の場合  
- 　　 
-      Aolumn=K
+ 
+      Column=K
       
       Row=6  
   
