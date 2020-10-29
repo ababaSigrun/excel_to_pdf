@@ -1,8 +1,12 @@
 import os
 import glob
 import openpyxl
-import xlwings as xw
-
+import sys
+from reportlab.pdfbase.cidfonts import UnicodeCIDFont
+from reportlab.pdfbase import pdfmetrics
+from reportlab.platypus import SimpleDocTemplate, Table, TableStyle
+from reportlab.lib.pagesizes import A4
+from reportlab.lib import colors
 # pip install openpyxlをやってExcelを開ける環境を作ること。
 
 #  出力先の中身を空にする。
@@ -68,12 +72,39 @@ def getExcel(fileName,targetAddress,sheetName,passList) :
         if targetCel ==  passid.split("=")[0] :
             #一致するものがあった場合に以下処理を行う。
             print(fileName)
-            wc =  xw.App.books.open('ImportExcel/' + fileName)
-            wc.api.ExportAsFixedFormat(0, "/OutputPDF")
+            # コピーを作る。
+            ws = wb.active         
+            # OutputPDF
+            pdf_gen_proc(fileName.replace('xlsx','pdf'),ws)
+            # 対象のファイルを探しパスを設定
+            # Dirの移動
         else :
             print(targetCel + "  : " + passid)
 
 
+
+# https://qiita.com/ekzemplaro/items/125a578167d41b3540ef 参照
+def pdf_gen_proc(file_pdf,ws):
+    doc = SimpleDocTemplate(file_pdf, pagesize=A4)
+    fontname_g = "HeiseiKakuGo-W5"
+    pdfmetrics.registerFont(UnicodeCIDFont(fontname_g))
+    elements = []
+#
+    data = []
+    for row in ws.rows:
+        unit_aa = []
+        print(row[0].value)
+        for col in row:
+            unit_aa.append(col.value)
+        data.append(unit_aa)
+    tt=Table(data)
+    tt.setStyle(TableStyle([('BACKGROUND',(1,1),(-2,-2),colors.cyan),
+        ('TEXTCOLOR',(0,0),(1,-1),colors.red),
+        ('FONT', (0, 0), (-1, -1), "HeiseiKakuGo-W5", 20),
+        ('GRID', (0, 0), (ws.max_column, ws.max_row), 0.25, colors.black),]))
+    elements.append(tt)
+#
+    doc.build(elements)
 
 
 # メインメソッド
