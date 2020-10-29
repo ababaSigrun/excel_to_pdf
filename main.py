@@ -100,7 +100,7 @@ def pdf_gen_proc(file_pdf,ws):
     tt=Table(data)
     tt.setStyle(TableStyle([('BACKGROUND',(1,1),(-2,-2),colors.cyan),
         ('TEXTCOLOR',(0,0),(1,-1),colors.red),
-        ('FONT', (0, 0), (-1, -1), "HeiseiKakuGo-W5", 20),
+        ('FONT', (0, 0), (-1, -1), "HeiseiKakuGo-W5", 2),
         ('GRID', (0, 0), (ws.max_column, ws.max_row), 0.25, colors.black),]))
     elements.append(tt)
     # print('ws.max_column : ' + str(ws.max_column) + ' ws.max_row : '+ str(ws.max_row))
