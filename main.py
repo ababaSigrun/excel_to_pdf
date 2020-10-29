@@ -103,6 +103,7 @@ def pdf_gen_proc(file_pdf,ws):
         ('FONT', (0, 0), (-1, -1), "HeiseiKakuGo-W5", 20),
         ('GRID', (0, 0), (ws.max_column, ws.max_row), 0.25, colors.black),]))
     elements.append(tt)
+    # print('ws.max_column : ' + str(ws.max_column) + ' ws.max_row : '+ str(ws.max_row))
 #
     doc.build(elements)
 
