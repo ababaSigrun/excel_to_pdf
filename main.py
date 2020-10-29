@@ -1,6 +1,7 @@
 import os
 import glob
 import openpyxl
+import xlwings as xw
 
 # pip install openpyxlをやってExcelを開ける環境を作ること。
 
@@ -58,12 +59,19 @@ def getTagetFileNameList():
     return retList
 
 #Excelファイルを開く。
-def getExcel(fileName,targetAddress,sheetName) :
+def getExcel(fileName,targetAddress,sheetName,passList) :
     wb=openpyxl.load_workbook('ImportExcel/' + fileName)
     sheet = wb.get_sheet_by_name(sheetName)
     # 対象のセルのアドレスを取得
-    x = sheet[targetAddress].value
-    print(x)
+    targetCel = sheet[targetAddress].value
+    for passid in passList:
+        if targetCel ==  passid.split("=")[0] :
+            #一致するものがあった場合に以下処理を行う。
+            print(fileName)
+            wc =  xw.App.books.open('ImportExcel/' + fileName)
+            wc.api.ExportAsFixedFormat(0, "/OutputPDF")
+        else :
+            print(targetCel + "  : " + passid)
 
 
 
@@ -87,9 +95,8 @@ tagetFileNameList = getTagetFileNameList()
 
 
 
-# 対象のファイルを開く
+# 対象のファイルを開きpdfのコピーを作る
 for name in tagetFileNameList :
-    getExcel(name,targetAddress,'Sheet1')
+    getExcel(name,targetAddress,'Sheet1',passList)
 
-
-
+# https://fastclassinfo.com/entry/python_excel_pdf/
